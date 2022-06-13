@@ -24,21 +24,8 @@ int main(int argc, char** argv) {
         }
     }
     int intervalo = (int)((NUMBER-2)/nprocs);
-
-    // if (intervalo*nprocs < NUMBER-2){
-    //     intervalo++;
-    // }
     
     MPI_Scatter(vet, intervalo, MPI_INT,vet, intervalo, MPI_INT, 0, MPI_COMM_WORLD);
-
-    // for(i = 0; i < intervalo; i++){
-    //   if(rank == 0){
-    //         printf("%d-[%d]\n", i, vet[i]);
-    //     }
-    //     // if(rank == 1){
-    //     //     printf("1-[%d]\n", vet[i]);
-    //     // }  
-    // }
 
     int aux = 1;
     if(rank != 0){
@@ -53,16 +40,6 @@ int main(int argc, char** argv) {
             
         }
     }
-    
-    // for(i = 0; i < intervalo; i++){
-    //   //if(rank == 0){
-    //     //    printf("%d-(%d)\n", i, vet[i]);
-    //     //}
-    //     if(rank == 1){
-    //       printf("%d-(%d)\n", i, vet[i]);
-    //     }  
-    // }
-    
 
     MPI_Allgather(vet,intervalo,MPI_INT,result,intervalo,MPI_INT,MPI_COMM_WORLD);
     fim = MPI_Wtime();

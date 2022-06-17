@@ -42,7 +42,7 @@ int main(int argc, char** argv) {
             }
         }
     }  
-    MPI_Allgather(subvet,interval,MPI_INT,result,interval,MPI_INT,MPI_COMM_WORLD);
+    MPI_Gather(subvet,interval,MPI_INT,result,interval,MPI_INT,0,MPI_COMM_WORLD);
     end = MPI_Wtime();
     if (rank == 0){
         for (i=0; i < NUMBER-2; i++){
